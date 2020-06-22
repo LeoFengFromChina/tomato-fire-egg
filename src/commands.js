@@ -5,9 +5,29 @@
  * Date:2020-6-21 13:39:21
  */
 const inquirer = require('inquirer');
+const init = require('./init')
 module.exports = {
     init() {
-        console.log('init')
+        inquirer
+            .prompt([
+                {
+                    name: "projectName",
+                    type: "input",
+                    message: "please input your project name:",
+                    default: "tomato-fire-egg"
+                }
+            ])
+            .then(answers => {
+                init.run(answers)
+            })
+            .catch(error => {
+                if (error.isTtyError) {
+                    console.log('Prompt couldn\'t be rendered in the current environment.')
+                } else {
+                    console.log('Something else when wrong.')
+                }
+            });
+
     },
     startGenerate(func) {
         inquirer

@@ -1,7 +1,7 @@
 {
   "name": "tomato-fire-egg",
-  "version": "1.0.5",
-  "description": "this is an egg basic code generator power by LeoFeng.",
+  "version": "1.0.6",
+  "description": "this is an egg basic code generator(db's table/document CRUD) power by LeoFeng.including eggjs framework and usesfull setting.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^5.1.0",
+    "download-git-repo": "^3.0.2",
     "inquirer": "^7.2.0",
     "pascal-case": "^3.1.1"
   },
@@ -23,7 +24,8 @@
     "egg-pro",
     "egg-cli",
     "egg-mini-server",
-    "egg-generator"
+    "egg-generator",
+    "CRUD"
   ],
   "repository": {
     "type": "git",
