@@ -5,7 +5,13 @@
  * Date:2020-6-21 13:39:21
  */
 const Controller = require('egg').Controller;
-
+// [T*]定义创建接口的请求参数规则
+//const createRule = {
+//    appName: 'string',
+//    appId: 'string',
+//    secret: 'string',
+//    status: { type: 'enum', values: [0, 1], required: false }
+//};
 class {{PSC_DOC_NAME}}Controller extends Controller {
 
     //----------------------------RESTfull API Start---------------------------------
@@ -17,6 +23,10 @@ class {{PSC_DOC_NAME}}Controller extends Controller {
     }
     async create() {
         const { ctx } = this;
+        // [T*]校验 `ctx.request.body` 是否符合我们预期的格式
+        // 如果参数校验未通过，将会抛出一个 status = 422 的异常
+        //ctx.validate(createRule, ctx.request.body);
+
         let r = await ctx.service.{{DOC_NAME}}.create(ctx.request.body);
         ctx.body = r;
     }
@@ -38,7 +48,7 @@ class {{PSC_DOC_NAME}}Controller extends Controller {
     //----------------------------RESTfull API End---------------------------------
     async query() {
         const { ctx } = this;
-        let r = await ctx.paginationQuery({{DOC_NAME}},ctx.request.body);
+        let r = await ctx.paginationQuery('{{PSC_DOC_NAME}}',ctx.request.body);
         ctx.body = r;
     }
 }

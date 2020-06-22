@@ -29,6 +29,7 @@ class {{PSC_DOC_NAME}}Service extends Service {
         result.data = null;
         result.msg = null;
         console.log('create body:' + JSON.stringify(entity))
+        //[T*]创建前，确认不能重复的字段。
         //let record = await this.ctx.model.{{PSC_DOC_NAME}}.find({ 'appId': entity.appId });
         //if (record && record.length > 0) {
         //    console.log('appId already exist.')

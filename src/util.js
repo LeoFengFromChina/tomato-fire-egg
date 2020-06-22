@@ -1,13 +1,19 @@
 
+/**
+ * util for tomato-fire-egg cli.
+ * some of then are from internet func.
+ * Author:LeoFeng
+ * Date:2020-6-21 13:39:21
+ */
 const fs = require('fs');
 const path = require('path')
 /**
  * 读取路径信息
  * @param {string} path 路径
  */
-function getStat(path) {
+function getStat(_path) {
     return new Promise((resolve, reject) => {
-        fs.stat(path, (err, stats) => {
+        fs.stat(_path, (err, stats) => {
             if (err) {
                 resolve(false);
             } else {
@@ -55,21 +61,22 @@ async function dirExists(dir) {
     }
     return mkdirStatus;
 }
-async function readFileList(path, isDeep, filesList = []) {
-    var files = fs.readdirSync(path);
+async function readFileList(_path, isDeep, filesList = []) {
+    var files = fs.readdirSync(_path);
     files.forEach(function (itm, index) {
-        var stat = fs.statSync(path + itm);
+        // console.log("xxxxxx:"+)
+        var stat = fs.statSync(path.join(_path, itm));
         //如果isDeep，读取子目录文件
         if (stat.isDirectory()) {
             //递归读取文件
             if (isDeep) {
-                readFileList(path + itm + "\\", isDeep, filesList)
+                readFileList(path.join(_path, itm), isDeep, filesList)
             } else {
                 console.log("skip sub dir:[" + itm + "]")
             }
         } else {
             var obj = {};
-            obj.path = path;//文件的目录，不含文件名
+            obj.path = _path;//文件的目录，不含文件名
             obj.filename = itm//文件名，如name.js
             filesList.push(obj);
         }
