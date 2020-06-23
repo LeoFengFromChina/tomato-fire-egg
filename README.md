@@ -1,14 +1,14 @@
 
 # tomato-fire-egg【番茄炒蛋】
 
-> 这是一个egg框架项目的脚手架。可以方便的为你创建一个egg项目[开发中...],创建好项目后，你可以在`app/model/`文件夹下创建mongosee的文档模型，然后运行本脚手架响应的命令，脚手架会为你针对这个文档模型，创建增/删/改/查的CRUD通用代码(包含分页查询)，可以直接跑起来。
+> 这是一个egg框架项目的脚手架。可以方便的为你创建一个实现部分特性的egg项目-[tomato-egg-basic](https://github.com/LeoFengFromChina/tomato-egg-basic.git)，创建好项目后，你可以在`app/model/`文件夹下创建mongosee的文档模型，然后运行本脚手架响应的命令，脚手架会为你针对这个文档模型，创建增/删/改/查的CRUD通用代码(包含分页查询)，可以直接跑起来。
 
-### 支持情况：
+### 命令实现情况：
 
 - 【√】init
-- 【√】gen =>【√】mongodb；【ing..】sequelize
+- 【√】gen 
 
-> 说明，截止2020-06-22 14:00，仅支持Mongodb数据库文档模型的controller和service生成。
+> 说明，支持Mongodb数据库文档模型的controller和service生成,并对应配置路由route。
 
 ### 全局安装
 
@@ -26,11 +26,11 @@ npm install tomato-fire-egg -g
 ``` 
 tomato-fire-egg init
 ``` 
-输入项目名称，创建项目文件夹，并自动获取远程git基础代码。
-> init 回来egg基础代码后，请确保数据库相关配置地址、账号密码是正确和有效的，或者，直接config/plugin.js文件下，禁用插件。[code](https://github.com/LeoFengFromChina/tomato-egg-basic.git)
+输入项目名称，脚手架会帮你创建项目文件夹，并自动获取上述git基础代码。
+> 初始化完成后，请修改并确保数据库相关配置地址、账号密码是正确和有效的，或者，直接config/plugin.js文件下，禁用插件。[code](https://github.com/LeoFengFromChina/tomato-egg-basic.git)
 
 - `app/config/config.default.js` :
-``` 
+```bash
 //mongodb的配置，支持多连接配置 by LeoFeng 2020-5-21 13:48:53
   config.mongoose = {
     clients: {
@@ -46,15 +46,15 @@ tomato-fire-egg init
     dialect: 'mysql',
     host: '168.168.xx.xx',//你的数据库IP
     port: 3306,
-    database: 'gac_egg_core',
-    username: 'root',
-    password: 'xxx',//你的数据库密码
+    database: 'gac_egg_core',//你的数据库名称
+    username: 'root',//你的登录名
+    password: 'xxx',//你的密码
     delegate: 'sequelizeModel', //挂载到app上的model名称，此配置后可以通过app.sequelizeModel访问
     baseDir: 'model/sequelize', //由于mongoose已占用了默认的model路径，所以新增一个sequelize文件夹来存储
   };
 ``` 
 - `app/config/config.local.js`:
-``` 
+```bash
 //redis配置 by LeoFeng 2020-5-25 10:38:30
   exports.redis = {
     client: {
@@ -95,6 +95,8 @@ tomato-fire-egg g
 - 执行`tomato-fire-egg g`命令，生成`controller`和`service`代码；
 - 在路由上配置好路由所对应的`controller`方法
 - `npm run dev`即可跑起来进行对文档的CRUD
+
+> 具体基础代码的应用，tomato-egg-basic项目下README.md有详细的说明。
 
 ## 引用参考
 [commander](https://github.com/tj/commander.js/blob/HEAD/Readme_zh-CN.md)

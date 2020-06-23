@@ -14,7 +14,7 @@ module.exports = {
                     name: "projectName",
                     type: "input",
                     message: "please input your project name:",
-                    default: "tomato-fire-egg"
+                    default: "tomato-egg-basic"
                 }
             ])
             .then(answers => {
@@ -37,7 +37,7 @@ module.exports = {
                     type: "checkbox",
                     message: "please select the file that you want to generate.",
                     choices: ["Controller", "Service", "Router"],
-                    default: ["Controller", "Service"]
+                    default: ["Controller", "Service", "Router"]
                 },
                 {
                     name: "isDeep",

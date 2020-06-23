@@ -1,0 +1,1 @@
+router.resources('{{DOC_NAME}}', '/{{DOC_NAME}}', whitelistchecker, controller.{{DOC_NAME}});//{{DATE_TIME}}

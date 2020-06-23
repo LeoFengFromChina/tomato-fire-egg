@@ -10,7 +10,7 @@ const command = require('./commands')
 const program = require('commander');
 async function main() {
     program
-        .version('1.0.6');
+        .version('1.0.7');
     program
         .command('gen').alias('g')
         .description('generate the controller/service or router\'s basic code.')
