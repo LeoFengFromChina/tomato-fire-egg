@@ -1,18 +1,18 @@
 
 # tomato-fire-egg【番茄炒蛋】
 
-> 这是一个egg框架项目的脚手架。可以方便的为你创建一个实现部分特性的egg项目-[tomato-egg-basic](https://github.com/LeoFengFromChina/tomato-egg-basic.git)，创建好项目后，你可以在`app/model/`文件夹下创建mongosee的文档模型，然后运行本脚手架响应的命令，脚手架会为你针对这个文档模型，创建增/删/改/查的CRUD通用代码(包含分页查询)，可以直接跑起来。
+> 这是一个egg框架项目的脚手架。可以通过`tomato-fire-egg init`指令快速创建一个egg基础项目-[egg基础项目git地址](https://github.com/LeoFengFromChina/tomato-egg-basic.git)，创建好项目后，你可以在`app/model/`文件夹下创建`mongoose`的文档模型，然后运行本脚手架`tomato-fire-egg g`命令，脚手架会为你针对这个文档模型，创建增/删/改/查的CRUD通用代码(包含分页查询)，可以直接跑起来[其他数据库的代码生成将陆续支持]。
 
 ### 命令实现情况：
 
-- 【√】init
-- 【√】gen 
+- 【√】init ：快速初始化egg基础代码
+- 【√】gen  ：对已建好的`mongoose`模型`model`快速生成增删改查的通用代码。
 
 > 说明，支持Mongodb数据库文档模型的controller和service生成,并对应配置路由route。
 
 ### 全局安装
 
-``` 
+```
 npm install tomato-fire-egg -g
 
 ```
@@ -27,7 +27,7 @@ npm install tomato-fire-egg -g
 tomato-fire-egg init
 ``` 
 输入项目名称，脚手架会帮你创建项目文件夹，并自动获取上述git基础代码。
-> 初始化完成后，请修改并确保数据库相关配置地址、账号密码是正确和有效的，或者，直接config/plugin.js文件下，禁用插件。[code](https://github.com/LeoFengFromChina/tomato-egg-basic.git)
+> 初始化完成后，请修改并确保数据库相关配置地址、账号密码是正确和有效的，或者，直接config/plugin.js文件下，禁用插件。
 
 - `app/config/config.default.js` :
 ```bash
@@ -93,10 +93,9 @@ tomato-fire-egg g
 - 初始化好egg框架代码、进入项目根目录(`project.json`所在目录);
 - 在`app/model/`下创建你的文档模型(也就是表的model)；
 - 执行`tomato-fire-egg g`命令，生成`controller`和`service`代码；
-- 在路由上配置好路由所对应的`controller`方法
-- `npm run dev`即可跑起来进行对文档的CRUD
+- `npm run dev`即可跑起来进行对文档的CRUD;[!!!确保上文提到的相关数据库地址、账号密码正确有效!!!]
 
-> 具体基础代码的应用，tomato-egg-basic项目下README.md有详细的说明。
+> 具体基础代码的说明，tomato-egg-basic项目下README.md有详细的说明。[查看](https://github.com/LeoFengFromChina/tomato-egg-basic.git)
 
 ## 引用参考
 [commander](https://github.com/tj/commander.js/blob/HEAD/Readme_zh-CN.md)
