@@ -20,12 +20,10 @@ async function coreGererator(typeName, _name, _isOverWrite) {
     let destiDir = gControllerDir;
     let destTemplatePath = controllerTemplatePath;
     switch (typeName) {
-        case 'Controller':
-            {
-                destiDir = gControllerDir;
-                destTemplatePath = controllerTemplatePath;
-            }
-            break;
+        case 'Controller': {
+            destiDir = gControllerDir;
+            destTemplatePath = controllerTemplatePath;
+        } break;
         case 'Service': {
             destiDir = gServiceDir;
             destTemplatePath = serviceTemplatePath;
@@ -40,9 +38,7 @@ async function coreGererator(typeName, _name, _isOverWrite) {
     let filepath = path.join(destiDir, _name);
     if (typeName === 'Router') {
         filepath = path.join(destiDir, 'router.js');
-        rRouter(filepath, _name)
-
-
+        await rRouter(filepath, _name)
     } else {
         readFile(filepath).then(res => {
             if (_isOverWrite) {
@@ -69,16 +65,16 @@ module.exports = {
             console.log('>>> warn:no model file found in app/model folder.')
             return;
         }
-        fileList.forEach(fileObj => {
+        for (let i = 0; i < fileList.length; i++) {
             if (answers.toGenerateType.indexOf("Controller") > -1) {
-                coreGererator('Controller', fileObj.filename, answers.isOverWrite)
+                await coreGererator('Controller', fileList[i].filename, answers.isOverWrite)
             }
             if (answers.toGenerateType.indexOf("Service") > -1) {
-                coreGererator('Service', fileObj.filename, answers.isOverWrite)
+                await coreGererator('Service', fileList[i].filename, answers.isOverWrite)
             }
             if (answers.toGenerateType.indexOf("Router") > -1) {
-                coreGererator('Router', fileObj.filename, answers.isOverWrite)
+                await coreGererator('Router', fileList[i].filename, answers.isOverWrite)
             }
-        })
+        }
     }
 }

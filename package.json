@@ -1,6 +1,6 @@
 {
   "name": "tomato-fire-egg",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "this is an egg basic code generator(db's table/document CRUD) power by LeoFeng.including eggjs framework and usesfull setting.",
   "main": "index.js",
   "scripts": {

@@ -3,7 +3,7 @@ const { pascalCase } = require("pascal-case");
 const format = require('dateformat');
 const { readFile } = require('./util')
 
-function replaceTemplate(typeName, modelName, tPath, sFilePath,) {
+async function replaceTemplate(typeName, modelName, tPath, sFilePath,) {
     readFile(tPath).then(res => {
         let tKey = modelName.substr(0, modelName.lastIndexOf('.'));
         let txt = res.replace(/{{PSC_DOC_NAME}}/g, pascalCase(tKey));
@@ -22,9 +22,9 @@ function replaceTemplate(typeName, modelName, tPath, sFilePath,) {
         throw err
     });
 }
-function routerTemplate(filepath, _name) {
+async function routerTemplate(filepath, _name) {
     let oName = _name.substr(0, _name.indexOf('.'));
-    readFile(filepath).then(res => {
+    await readFile(filepath).then(res => {
         if (res.search("router.resources\\('" +
             oName + "', '\/" +
             oName + "',") > -1) {
